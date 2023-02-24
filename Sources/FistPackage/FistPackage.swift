@@ -5,13 +5,12 @@ import SwiftUI
 public struct FistPackage {
     public private(set) var text = "Hello, World!"
 
-    @Binding var selectedIndex: Int
+//     var selectedIndex: Int = 1
         @Namespace private var menuItemTransition
      
         var menuItems = [ "Travel", "Nature", "Architecture" ]
      
-        public init(selectedIndex: Binding<Int>, menuItems: [String] = [ "Travel", "Nature", "Architecture" ]) {
-            self._selectedIndex = selectedIndex
+        public init(menuItems: [String] = [ "Travel", "Nature", "Architecture" ]) {
             self.menuItems = menuItems
         }
      
@@ -22,7 +21,7 @@ public struct FistPackage {
      
                 ForEach(menuItems.indices) { index in
      
-                    if index == selectedIndex {
+                    if index == 1 {
                         Text(menuItems[index])
                             .padding(.horizontal)
                             .padding(.vertical, 4)
@@ -35,7 +34,7 @@ public struct FistPackage {
                             .padding(.vertical, 4)
                             .background(Capsule().foregroundColor(Color( red: 244, green: 244, blue: 244)))
                             .onTapGesture {
-                                selectedIndex = index
+//                                self.selectedIndex = index
                             }
                     }
      
@@ -45,7 +44,7 @@ public struct FistPackage {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .animation(.easeInOut, value: selectedIndex)
+            .animation(.easeInOut, value: 1)
      
         }
 }
